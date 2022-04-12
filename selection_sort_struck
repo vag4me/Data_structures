@@ -8,9 +8,9 @@ struct elements
 	char *string2[10];
 	char *string3[10];
 };
-	struct elements one[2];
+	struct elements one[100];
 	
-void selectionSort(struct elements two[2], int size) {
+void selectionSort(struct elements two[100], int size) {
   int min_idx,step,i;
   struct elements temp;
    
