@@ -1,0 +1,101 @@
+#include <iostream>
+#include <fstream>
+#include <cstring>
+#include <cstdlib>
+#include <sstream>
+#include <bits/stdc++.h>
+#include <sys/time.h>
+using namespace std;
+
+struct elements
+{
+	int num;
+	string string1;
+	string string2;
+	string string3;
+};
+struct elements one[50];
+
+void quickSort(struct elements two[100], int left, int right) {
+
+      int i = left, j = right;
+      struct elements tmp;
+      int pivot = two[(left + right) / 2].num;
+
+      while (i <= j) {
+            while (two[i].num < pivot)
+                  i++;
+            while (two[j].num > pivot)
+                  j--;
+            if (i <= j) {
+                  tmp = two[i];
+                  two[i] = two[j];
+                  two[j] = tmp;
+                  i++;
+                  j--;
+            }
+      }
+
+      if (left < j)
+            quickSort(two, left, j);
+      if (i < right)
+            quickSort(two, i, right);
+}
+
+
+int main(int argc, char** argv) {
+	string myText;
+	int count=0,value,i=0;
+	 struct timespec start, end;
+    double time_taken;
+	
+	ifstream MyReadFile("elements.txt");
+	
+	getline(MyReadFile, myText);
+	stringstream geek(myText);
+	int x = 0;
+    geek >> x;
+    one[0].num = x;
+
+    
+	
+	while (getline (MyReadFile, myText)) {
+  		count++;
+  		if(count == 1)
+  		{
+  			one[i].string1 = myText;
+		}
+		else if(count == 2)
+		{
+			one[i].string2 = myText;
+		}
+		else if(count == 3)
+		{
+			one[i].string3 = myText;
+		}
+		else if(count == 4)
+		{
+			stringstream geek(myText);
+			int y = 0;
+    		geek >> y;
+    		one[i].num = y;
+			count=0;
+			i++;
+		}
+
+				
+}
+	// xronos gia bubble sort
+	clock_gettime(CLOCK_MONOTONIC, &start); 
+	 quickSort(one,0,49);
+	clock_gettime(CLOCK_MONOTONIC, &end); 
+	time_taken = (end.tv_sec - start.tv_sec) * 1e9;
+	time_taken = (time_taken + (end.tv_nsec - start.tv_nsec)) * 1e-9; 
+	printf("xronos gia tin quick sort %f\n",time_taken);
+	
+
+	
+	
+	
+	return 0;
+}
