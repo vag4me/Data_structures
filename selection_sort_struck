@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct elements
+{
+	int num;
+	char *string1[10];
+	char *string2[10];
+	char *string3[10];
+};
+	struct elements one[2];
+	
+void selectionSort(struct elements two[2], int size) {
+  int min_idx,step,i;
+  struct elements temp;
+   
+  for(step = 0; step < size - 1; step++) {
+    min_idx = step;
+    for (i = step + 1; i < size; i++) {
+      if (two[i].num < two[min_idx].num)
+        min_idx = i;
+    }
+    
+    temp = two[min_idx];
+    two[min_idx] = two[step];
+    two[step] = temp;
+    
+  }
+}
+
+int main(int argc, char *argv[]) {
+	
+	return 0;
+}
