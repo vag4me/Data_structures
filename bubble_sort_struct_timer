@@ -35,67 +35,6 @@ void bsortDesc(struct elements two[50],int s)
     }
 }
 
-void selectionSort(struct elements two[100], int size) {
-  int min_idx,step,i;
-  struct elements temp;
-   
-  for(step = 0; step < size - 1; step++) {
-    min_idx = step;
-    for (i = step + 1; i < size; i++) {
-      if (two[i].num < two[min_idx].num)
-        min_idx = i;
-    }
-    
-    temp = two[min_idx];
-    two[min_idx] = two[step];
-    two[step] = temp;
-    
-  }
-}
-
-void quickSort(struct elements two[100], int left, int right) {
-
-      int i = left, j = right;
-      struct elements tmp;
-      int pivot = two[(left + right) / 2].num;
-
-      while (i <= j) {
-            while (two[i].num < pivot)
-                  i++;
-            while (two[j].num > pivot)
-                  j--;
-            if (i <= j) {
-                  tmp = two[i];
-                  two[i] = two[j];
-                  two[j] = tmp;
-                  i++;
-                  j--;
-            }
-      };
-
-      if (left < j)
-            quickSort(two, left, j);
-      if (i < right)
-            quickSort(two, i, right);
-}
-
-void insertionSort(struct elements two[50], int n)
-{
-	struct elements temp;
-    int i, key, j;
-    for (i = 1; i < n; i++) {
-        key = two[i].num;
-        j = i - 1;
-        while (j >= 0 && two[j].num > key) {
-            temp = two[j];
-            two[j] = two[j + 1];
-            two[j + 1] = temp;
-            j = j - 1;
-        }
-        two[j + 1].num = key;
-    }
-}
-
 
 
 int main(int argc, char** argv) {
