@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+struct elements
+{
+	int num;
+	char *string1[10];
+	char *string2[10];
+	char *string3[10];
+};
+	struct elements one[2]; 
+
+void ShellSort(struct elements two[2],int size) {
+	int i, j, s, pas, qq;
+	double h[20];
+	struct elements temp;
+	
+	for (i=0; i <= 19; i++) 
+		h[i] = pow(2, i);
+	
+	for (s=19; s >= 0; s--) {
+		pas = h[s];
+		for (j = pas; j < size; j++) {
+			i = j - pas;
+			qq = two[j].num;
+			do {
+				if (qq >= two[i].num) 
+				break;
+				temp = two[i];
+                two[i] = two[i + 1];
+                two[i + 1] = temp;
+				i = i - pas;
+			} while (i >= 0);
+			two[i+pas].num = qq;
+		}
+	}
+}
+
+int main(int argc, char *argv[]) {
+	
+	return 0;
+}
