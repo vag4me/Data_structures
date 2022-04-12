@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+struct elements
+{
+	int num;
+	char *string1[10];
+	char *string2[10];
+	char *string3[10];
+};
+	struct elements one[100];
+	
+void quickSort(struct elements two[100], int left, int right) {
+
+      int i = left, j = right;
+      struct elements tmp;
+      int pivot = two[(left + right) / 2].num;
+
+      while (i <= j) {
+            while (two[i].num < pivot)
+                  i++;
+            while (two[j].num > pivot)
+                  j--;
+            if (i <= j) {
+                  tmp = two[i];
+                  two[i] = two[j];
+                  two[j] = tmp;
+                  i++;
+                  j--;
+            }
+      };
+
+      if (left < j)
+            quickSort(two, left, j);
+      if (i < right)
+            quickSort(two, i, right);
+}
+int main() {
+	
+	
+	return 0;
+}
