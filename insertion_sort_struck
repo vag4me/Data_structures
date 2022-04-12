@@ -1,0 +1,35 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct elements
+{
+	int num;
+	char *string1[10];
+	char *string2[10];
+	char *string3[10];
+};
+	struct elements one[2];
+	
+	
+	void insertionSort(struct elements two[2], int n)
+{
+	struct elements temp;
+    int i, key, j;
+    for (i = 1; i < n; i++) {
+        key = two[i].num;
+        j = i - 1;
+        while (j >= 0 && two[j].num > key) {
+            temp = two[j];
+            two[j] = two[j + 1];
+            two[j + 1] = temp;
+            j = j - 1;
+        }
+        two[j + 1].num = key;
+    }
+}
+
+int main(int argc, char *argv[]) {
+	
+
+	return 0;
+}
