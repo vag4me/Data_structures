@@ -1,0 +1,77 @@
+#include <stdio.h>
+#include <stdlib.h>
+  
+struct elements
+{
+	int num;
+	char *string1[10];
+	char *string2[10];
+	char *string3[10];
+};
+	struct elements one[100];  
+  
+void merge(struct elements two[100], int l, int m, int r)
+{
+    int i, j, k;
+    int n1 = m - l + 1;
+    int n2 = r - m;
+  
+    
+    int L[n1], R[n2];
+  
+   
+    for (i = 0; i < n1; i++)
+        L[i] = two[l + i].num;
+    for (j = 0; j < n2; j++)
+        R[j] = two[m + 1 + j].num;
+  
+   
+    i = 0; 
+    j = 0; 
+    k = l; 
+    while (i < n1 && j < n2) {
+        if (L[i] <= R[j]) {
+            two[k].num = L[i];
+            i++;
+        }
+        else {
+            two[k].num = R[j];
+            j++;
+        }
+        k++;
+    }
+  
+
+    while (i < n1) {
+        two[k].num = L[i];
+        i++;
+        k++;
+    }
+  
+    
+    while (j < n2) {
+        two[k].num = R[j];
+        j++;
+        k++;
+    }
+}
+  
+void mergeSort(struct elements two[100], int l, int r)
+{
+    if (l < r) {
+        int m = l + (r - l) / 2;
+  
+        mergeSort(two, l, m);
+        mergeSort(two, m + 1, r);
+  
+        merge(two, l, m, r);
+    }
+}
+  
+  
+
+int main()
+{
+   
+   
+}
