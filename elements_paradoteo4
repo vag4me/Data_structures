@@ -1,0 +1,56 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+struct elements
+{
+	int num;
+	char *string1[10];
+	char *string2[10];
+	char *string3[10];
+};
+
+void random_str(char ar[])
+{
+	int index;
+	char char1[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/,.-+=~`<>:";
+	for(index = 0; index < 10; index++)
+	{
+		ar[index] = char1[rand() % (sizeof char1 - 1)];
+	}
+}
+
+struct elements one[100];
+
+int main() {
+	char ar[10];
+	int i;
+	srand(time(0));
+	FILE *fp;
+	
+	for(i=0;i<100;i++)
+	{
+		one[i].num = rand();
+		random_str(one[i].string1);
+		random_str(one[i].string2);
+		random_str(one[i].string3);
+	}
+	
+	fp = fopen("elements.txt","w");
+	
+	if(fp == NULL)
+	{
+		printf("error file not found");
+		exit(1);
+	}
+	
+	for(i=0;i<100;i++)
+	{
+		fprintf(fp,"%d\n",one[i].num);
+		fprintf(fp,"%s\n",one[i].string1);
+		fprintf(fp,"%s\n",one[i].string2);
+		fprintf(fp,"%s\n",one[i].string3);
+	}
+	fclose(fp);
+	return 0;
+}
