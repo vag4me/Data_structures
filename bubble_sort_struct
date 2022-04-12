@@ -1,33 +1,39 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void bsortDesc(struct elements list[100], int s)
-{
-    int i, j;
-    struct student temp;
-    
-    for (i = 0; i < s - 1; i++)
-    {
-        for (j = 0; j < (s - 1-i); j++)
-        {
-            if (list[j].num < list[j + 1].num)
-            {
-                temp = list[j];
-                list[j] = list[j + 1];
-                list[j + 1] = temp;
-            } 
-        }
-    }
-}
-
 struct elements
 {
 	int num;
 	char *string1[10];
 	char *string2[10];
 	char *string3[10];
+};
+	struct elements one[100];
+
+
+void bsortDesc(struct elements two[100],int s)
+{
+    int i, j;
+    struct elements temp;
+    
+    for (i = 0; i < s - 1; i++)
+    {
+        for (j = 0; j < (s - 1-i); j++)
+        {
+            if (two[j].num > two[j + 1].num)
+            {
+                temp = two[j];
+                two[j] = two[j + 1];
+                two[j + 1] = temp;
+            } 
+        }
+    }
 }
 
+
+
+
 int main() {
+	
 	return 0;
 }
