@@ -13,7 +13,7 @@ struct elements
 	string string2;
 	string string3;
 };
-struct elements one[50];
+struct elements one[100];
 
 
 int main(int argc, char** argv) {
