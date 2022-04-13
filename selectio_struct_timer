@@ -14,7 +14,7 @@ struct elements
 	string string2;
 	string string3;
 };
-struct elements one[50];
+struct elements one[100];
 
 void selectionSort(struct elements two[100], int size) {
   int min_idx,step,i;
@@ -42,56 +42,57 @@ int main(int argc, char** argv) {
 	 struct timespec start, end;
     double time_taken;
 	
-	ifstream MyReadFile("elements2.txt");
+	ifstream MyReadFile("elements.txt");
 	if(MyReadFile == NULL)
 	{
 		cout << "error file not found";
 		exit(1);
 	}
 	
-	getline(MyReadFile, myText);
-	stringstream geek(myText);
-	int x = 0;
-    geek >> x;
-    one[0].num = x;
-
-
-    
-	
-	while (getline (MyReadFile, myText)) {
+while (getline (MyReadFile, myText)) {
   		count++;
   		if(count == 1)
   		{
-  			one[i].string1 = myText;
-		}
-		else if(count == 2)
-		{
-			one[i].string2 = myText;
-		}
-		else if(count == 3)
-		{
-			one[i].string3 = myText;
-		}
-		else if(count == 4)
-		{
-			stringstream geek(myText);
+  			stringstream geek(myText);
 			int y = 0;
     		geek >> y;
     		one[i].num = y;
-			count=0;
+			
+		}
+		else if(count == 2)
+		{
+			one[i].string1 = myText;
+		}
+		else if(count == 3)
+		{
+			one[i].string2 = myText;
+		}
+		else if(count == 4)
+		{
+			one[i].string3 = myText;
+			count = 0;
 			i++;
 		}
+		
 
 				
 }
 	// xronos gia bubble sort
 	clock_gettime(CLOCK_MONOTONIC, &start); 
-	selectionSort(one,50);
+	selectionSort(one,100);
 	clock_gettime(CLOCK_MONOTONIC, &end); 
 	time_taken = (end.tv_sec - start.tv_sec) * 1e9;
 	time_taken = (time_taken + (end.tv_nsec - start.tv_nsec)) * 1e-9; 
 	printf("xronos gia tin selection %f\n",time_taken);
 		
+	for(i=0;i<100;i++)
+	{
+		cout << one[i].num << endl;
+		cout << one[i].string1 << endl;
+		cout << one[i].string2 << endl;
+		cout << one[i].string3 << endl;
+		cout << endl;
+	}	
 	
 	return 0;
 }
